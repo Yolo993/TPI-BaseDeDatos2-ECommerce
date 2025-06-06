@@ -30,7 +30,6 @@ CREATE TABLE MediosDePago (
     Descripcion VARCHAR(100)
 );
 
-
 -- Tabla: Art�culos
 
 CREATE TABLE Articulos (
@@ -41,7 +40,6 @@ CREATE TABLE Articulos (
     Stock INT,
     Precio DECIMAL(10, 2),
     FOREIGN KEY (IdCategoria) REFERENCES Categorias(IdCategoria),
-    FOREIGN KEY (IdImagen) REFERENCES Imagenes(IdImagen)
 );
 
 ---- Tabla: Formas de entrega
@@ -75,6 +73,11 @@ CREATE TABLE DetalleVenta (
     FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
 );
 
+-- Tabla: Roles
+CREATE TABLE Roles (
+    IDRol INT PRIMARY KEY IDENTITY(1,1),
+    Descripcion NVARCHAR(100) NOT NULL
+);
 -- Tabla: Usuario
 CREATE TABLE Usuario (
     IDUsuario INT PRIMARY KEY IDENTITY(1,1),
@@ -83,11 +86,5 @@ CREATE TABLE Usuario (
     Mail NVARCHAR(150) NOT NULL UNIQUE,
     IDRol INT NOT NULL,
     FOREIGN KEY (IDRol) REFERENCES Roles(IDRol)
-);
-
--- Tabla: Roles
-CREATE TABLE Roles (
-    IDRol INT PRIMARY KEY IDENTITY(1,1),
-    Descripcion NVARCHAR(100) NOT NULL
 );
 
