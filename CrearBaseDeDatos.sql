@@ -5,7 +5,7 @@ GO
 use ECOMMERCEgrupo5
 go
 
--- Tabla: Categorías
+-- Tabla: Categorï¿½as
 
 CREATE TABLE Categorias (
     IdCategoria INT PRIMARY KEY IDENTITY(1,1),
@@ -19,7 +19,8 @@ CREATE TABLE Clientes (
     Nombre NVARCHAR(100),
     Apellido NVARCHAR(100),
     Mail NVARCHAR(150),
-    FechaNacimiento DATE
+    FechaNacimiento DATE,
+    UrlImagen NVARCHAR(255) 
 );
 
 -- Tabla: MedioDePago
@@ -29,13 +30,8 @@ CREATE TABLE MediosDePago (
     Descripcion VARCHAR(100)
 );
 
--- Tabla: Imágenes
-CREATE TABLE Imagenes (
-    IdImagen INT PRIMARY KEY IDENTITY(1,1),
-    UrlImagen VARCHAR(max),
-);
 
--- Tabla: Artículos
+-- Tabla: Artï¿½culos
 
 CREATE TABLE Articulos (
     IdArticulo INT PRIMARY KEY IDENTITY(1,1),
@@ -78,3 +74,20 @@ CREATE TABLE DetalleVenta (
 	FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta),
     FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
 );
+
+-- Tabla: Usuario
+CREATE TABLE Usuario (
+    IDUsuario INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    ContraseÃ±a NVARCHAR(100) NOT NULL,
+    Mail NVARCHAR(150) NOT NULL UNIQUE,
+    IDRol INT NOT NULL,
+    FOREIGN KEY (IDRol) REFERENCES Roles(IDRol)
+);
+
+-- Tabla: Roles
+CREATE TABLE Roles (
+    IDRol INT PRIMARY KEY IDENTITY(1,1),
+    Descripcion NVARCHAR(100) NOT NULL
+);
+
