@@ -24,7 +24,6 @@ CREATE TABLE MediosDePago (
 CREATE TABLE Articulos (
     IdArticulo INT PRIMARY KEY IDENTITY(1,1),
     IdCategoria INT,
-    IdImagen INT,
     Nombre VARCHAR(150),
     Stock INT,
     Precio DECIMAL(10, 2),

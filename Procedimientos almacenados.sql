@@ -40,16 +40,19 @@ BEGIN
         -- Uniendo las tablas Ventas, DetalleVenta, Articulos y MediosDePago
             SELECT 
             V.IdVenta,
-            V.IdUsuario AS IdCliente,
+            U.Mail AS Cliente,
             A.Nombre AS Articulo,
             MP.Descripcion AS MedioDePago,
             DV.Cantidad,
             V.MontoTotal,
+            FE.Descripcion AS FormaDeEntrega,
             V.Fecha
             FROM Ventas V
             INNER JOIN DetalleVenta DV ON V.IdVenta = DV.IdVenta
+            INNER JOIN FormasDeEntrega FE ON V.IdFormaDeEntrega = FE.IdFormaDeEntrega
             INNER JOIN Articulos A ON DV.IdArticulo = A.IdArticulo
             INNER JOIN MediosDePago MP ON V.IdMedioDePago = MP.IdMedioDePago
+            INNER JOIN Usuario U ON V.IdUsuario = U.IDUsuario
             WHERE YEAR(V.Fecha) = @Anio
             AND MONTH(V.Fecha) = @Mes
             ORDER BY V.Fecha, V.IdVenta;
