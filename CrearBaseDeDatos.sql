@@ -20,7 +20,6 @@ CREATE TABLE Clientes (
     Apellido NVARCHAR(100),
     Mail NVARCHAR(150),
     FechaNacimiento DATE,
-    UrlImagen NVARCHAR(255) 
 );
 
 -- Tabla: MedioDePago
@@ -39,6 +38,7 @@ CREATE TABLE Articulos (
     Nombre VARCHAR(150),
     Stock INT,
     Precio DECIMAL(10, 2),
+    UrlImagen NVARCHAR(255),
     FOREIGN KEY (IdCategoria) REFERENCES Categorias(IdCategoria),
 );
 
