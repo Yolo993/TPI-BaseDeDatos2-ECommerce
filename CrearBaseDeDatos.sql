@@ -5,21 +5,11 @@ GO
 use ECOMMERCEgrupo5
 go
 
--- Tabla: Categor�as
+-- Tabla: Categorías
 
 CREATE TABLE Categorias (
     IdCategoria INT PRIMARY KEY IDENTITY(1,1),
     Descripcion NVARCHAR(100),
-);
-
--- Tabla: Clientes
-
-CREATE TABLE Clientes (
-    IdCliente INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(100),
-    Apellido NVARCHAR(100),
-    Mail NVARCHAR(150),
-    FechaNacimiento DATE,
 );
 
 -- Tabla: MedioDePago
@@ -29,7 +19,7 @@ CREATE TABLE MediosDePago (
     Descripcion VARCHAR(100)
 );
 
--- Tabla: Art�culos
+-- Tabla: Artículos
 
 CREATE TABLE Articulos (
     IdArticulo INT PRIMARY KEY IDENTITY(1,1),
@@ -49,30 +39,6 @@ CREATE TABLE FormasDeEntrega (
     Descripcion VARCHAR(100)
 );
 
--- Tabla: Ventas
-CREATE TABLE Ventas (
-    IdVenta INT PRIMARY KEY IDENTITY(1,1),
-    IdCliente INT,
-    IdFormaDeEntrega INT,
-    IdMedioDePago INT,
-	Fecha DATE, 
-	MontoTotal DECIMAL(10, 2), 
-    FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente),
-	FOREIGN KEY (IDFormaDeEntrega) REFERENCES FormasDeEntrega (IDFormaDeEntrega),
-	FOREIGN KEY (IdMedioDePago) REFERENCES MediosDePago (IdMedioDePago)
-   
-);
--- Tabla: DetalleVenta
-CREATE TABLE DetalleVenta (
-    IdVenta INT ,
-    IdArticulo INT,
-    Cantidad INT,
-    PrecioUnitario DECIMAL(10, 2),
-	PRIMARY KEY(IdVenta, IdArticulo),
-	FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta),
-    FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
-);
-
 -- Tabla: Roles
 CREATE TABLE Roles (
     IDRol INT PRIMARY KEY IDENTITY(1,1),
@@ -86,5 +52,28 @@ CREATE TABLE Usuario (
     Mail NVARCHAR(150) NOT NULL UNIQUE,
     IDRol INT NOT NULL,
     FOREIGN KEY (IDRol) REFERENCES Roles(IDRol)
+);
+-- Tabla: Ventas
+CREATE TABLE Ventas (
+    IdVenta INT PRIMARY KEY IDENTITY(1,1),
+    IdUsuario INT,
+    IdFormaDeEntrega INT,
+    IdMedioDePago INT,
+	Fecha DATE, 
+	MontoTotal DECIMAL(10, 2), 
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+	FOREIGN KEY (IDFormaDeEntrega) REFERENCES FormasDeEntrega (IDFormaDeEntrega),
+	FOREIGN KEY (IdMedioDePago) REFERENCES MediosDePago (IdMedioDePago)
+   
+);
+-- Tabla: DetalleVenta
+CREATE TABLE DetalleVenta (
+    IdVenta INT ,
+    IdArticulo INT,
+    Cantidad INT,
+    PrecioUnitario DECIMAL(10, 2),
+	PRIMARY KEY(IdVenta, IdArticulo),
+	FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta),
+    FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
 );
 
