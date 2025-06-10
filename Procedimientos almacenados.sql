@@ -41,9 +41,9 @@ BEGIN
             SELECT 
             V.IdVenta,
             U.Mail AS Cliente,
-            A.Nombre AS Articulo,
+            STRING_AGG(A.Nombre, ', ') AS Articulos,
             MP.Descripcion AS MedioDePago,
-            DV.Cantidad,
+            SUM(DV.Cantidad) AS TotalCantidad,
             V.MontoTotal,
             FE.Descripcion AS FormaDeEntrega,
             V.Fecha
@@ -55,6 +55,7 @@ BEGIN
             INNER JOIN Usuario U ON V.IdUsuario = U.IDUsuario
             WHERE YEAR(V.Fecha) = @Anio
             AND MONTH(V.Fecha) = @Mes
+            GROUP BY V.IdVenta, U.Mail, MP.Descripcion, V.MontoTotal, FE.Descripcion, V.Fecha
             ORDER BY V.Fecha, V.IdVenta;
     END TRY
     -- Manejo de errores

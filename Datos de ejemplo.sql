@@ -1,13 +1,12 @@
 USE ECOMMERCEgrupo5;
 GO
 
--- Insertar los roles de usuario
+-- Roles de usuario
 INSERT INTO Roles (Descripcion) VALUES 
 ('Administrador'),
-('Cliente'),
-('Vendedor');
+('Cliente')
 
--- Insertar usuarios de ejemplo
+-- Usuarios de ejemplo
 INSERT INTO Usuario (Nombre, Contraseña, Mail, IDRol) VALUES 
 -- Administradores
 ('JuanAdmin', 'admin123', 'juan.admin@gmail.com', 1), 
