@@ -75,4 +75,3 @@ CREATE TABLE DetalleVenta (
 	FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta),
     FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
 );
-

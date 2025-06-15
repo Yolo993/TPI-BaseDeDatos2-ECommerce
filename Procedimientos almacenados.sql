@@ -41,8 +41,10 @@ BEGIN
             SELECT 
             V.IdVenta,
             U.Mail AS Cliente,
+            -- Todos los articulos que se encuentran en los DetalleVenta de la venta, apareceran como Articulos separados por coma
             STRING_AGG(A.Nombre, ', ') AS Articulos,
             MP.Descripcion AS MedioDePago,
+            -- Se suma la cada articulo vendido y aparece la cantidad total de articulos vendidos 
             SUM(DV.Cantidad) AS TotalCantidad,
             V.MontoTotal,
             FE.Descripcion AS FormaDeEntrega,
