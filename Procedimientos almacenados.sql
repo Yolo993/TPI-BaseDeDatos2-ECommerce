@@ -12,7 +12,7 @@ AS
 BEGIN
     BEGIN TRY
         -- Verificar si ya hay un cliente con el mismo correo electrónico
-        IF EXISTS (SELECT 1 FROM Usuario WHERE Mail = @Mail AND IDRol = @IDRol)
+        IF EXISTS (SELECT 1 FROM Usuario WHERE Mail = @Mail)
         BEGIN 
             RAISERROR('Un usuario con el mismo correo electrónico ya existe.',16,1);
         END
