@@ -2,7 +2,7 @@ USE ECOMMERCEgrupo5;
 GO
 
 -- Trigger para actualizar el stock de los articulos cada vez que se hace un insert en DetalleVenta
-CREATE TRIGGER tr_Actualizar_Stock_Al_Agregar
+CREATE TRIGGER TRG_ActualizarStock_PosVenta
 ON DetalleVenta
 AFTER INSERT
 AS
@@ -23,7 +23,7 @@ GO
 
 
 -- Trigger para actualizar el stock de los articulos cada vez que se hace un delete en DetalleVenta
-CREATE TRIGGER tr_Actualizar_Stock_Al_Eliminar
+CREATE TRIGGER tr_Actualizar_Stock_Al_Eliminar_DV
 ON DetalleVenta
 AFTER DELETE
 AS
@@ -42,7 +42,7 @@ END
 GO
 
 -- Trigger para actualizar el stock de los articulos al modificar un detalle de venta
-CREATE TRIGGER tr_Actualizar_Stock_Al_Modificar
+CREATE TRIGGER tr_Actualizar_Stock_Al_Modificar_DV
 ON DetalleVenta
 AFTER UPDATE
 AS
@@ -67,7 +67,7 @@ END
 GO
 
 -- Trigger para actualizar el MontoTotal de la venta al agregar un DetalleVenta
-CREATE TRIGGER tr_Actualizar_MontoTotal_Al_Agregar
+CREATE TRIGGER tr_Actualizar_MontoTotal_Al_Agregar_DV
 ON DetalleVenta
 AFTER INSERT
 AS
@@ -90,7 +90,7 @@ END
 GO
 
 -- Trigger para actualizar el MontoTotal de la venta al eliminar un DetalleVenta
-CREATE TRIGGER tr_Actualizar_MontoTotal_Al_Eliminar
+CREATE TRIGGER tr_Actualizar_MontoTotal_Al_Eliminar_DV
 ON DetalleVenta
 AFTER DELETE
 AS
@@ -113,7 +113,7 @@ END
 GO
 
 -- Trigger para actualizar el MontoTotal de la venta al modificar la cantidad o el precio unitario de un detalle de venta
-CREATE TRIGGER tr_Actualizar_MontoTotal_Al_Modificar
+CREATE TRIGGER tr_Actualizar_MontoTotal_Al_Modificar_DV
 ON DetalleVenta
 AFTER UPDATE
 AS

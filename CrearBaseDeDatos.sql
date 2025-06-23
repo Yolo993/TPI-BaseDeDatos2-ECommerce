@@ -47,6 +47,7 @@ CREATE TABLE Roles (
 CREATE TABLE Usuario (
     IDUsuario INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(100) NOT NULL,
+    Apellido NVARCHAR(100) NOT NULL,
     Contraseña NVARCHAR(100) NOT NULL,
     Mail NVARCHAR(150) NOT NULL UNIQUE,
     IDRol INT NOT NULL,
@@ -75,3 +76,4 @@ CREATE TABLE DetalleVenta (
 	FOREIGN KEY (IdVenta) REFERENCES Ventas (IdVenta),
     FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
 );
+

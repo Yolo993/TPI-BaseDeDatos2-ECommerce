@@ -1,5 +1,6 @@
 -- Restricciones en las columnas
-
+Use ECOMMERCEgrupo5;
+GO
 -- ARTICULOS
 
 ALTER TABLE Articulos

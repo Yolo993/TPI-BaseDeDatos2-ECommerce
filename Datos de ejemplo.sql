@@ -7,13 +7,13 @@ INSERT INTO Roles (Descripcion) VALUES
 ('Cliente')
 
 -- Usuarios de ejemplo
-INSERT INTO Usuario (Nombre, Contraseña, Mail, IDRol) VALUES 
+INSERT INTO Usuario (Nombre, Apellido, Contraseña, Mail, IDRol) VALUES 
 -- Administradores
-('JuanAdmin', 'admin123', 'juan.admin@gmail.com', 1), 
-('LauraAdmin', 'admin993', 'laura.admin@gmail.com', 1),
+('Juan', 'Admin', 'admin123', 'juan.admin@gmail.com', 1), 
+('Laura', 'Admin', 'admin993', 'laura.admin@gmail.com', 1),
 -- Clientes
-('MariaCliente', 'compra123', 'maria.cliente@gmail.com', 2), 
-('PedroCliente', 'compra993', 'pedro.cliente@gmail.com', 2);
+('Maria', 'Cliente', 'compra123', 'maria.cliente@gmail.com', 2), 
+('Pedro', 'Cliente', 'compra993', 'pedro.cliente@gmail.com', 2);
 
 --Insertar medios de pago
 INSERT INTO MediosDePago (Descripcion) VALUES
