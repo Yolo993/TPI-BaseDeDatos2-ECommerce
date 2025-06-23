@@ -5,6 +5,7 @@ GO
 CREATE PROCEDURE sp_Agregar_Usuario
 -- Parametros a ingresar
 @Nombre NVARCHAR(100),
+@Apellido NVARCHAR(100),
 @Contraseña NVARCHAR(100),
 @Mail NVARCHAR(150),
 @IDRol INT 
@@ -17,8 +18,8 @@ BEGIN
             RAISERROR('Un usuario con el mismo correo electrónico ya existe.',16,1);
         END
         ELSE BEGIN
-            INSERT INTO Usuario (Nombre, Contraseña, Mail, IDRol)
-            VALUES (@Nombre, @Contraseña, @Mail, @IDRol);
+            INSERT INTO Usuario (Nombre, Apellido, Contraseña, Mail, IDRol)
+            VALUES (@Nombre, @Apellido, @Contraseña, @Mail, @IDRol);
         END
     END TRY
     -- Manejo de errores
