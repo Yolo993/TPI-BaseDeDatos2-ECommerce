@@ -41,7 +41,7 @@ CREATE TABLE FormasDeEntrega (
 -- Tabla: Roles
 CREATE TABLE Roles (
     IDRol INT PRIMARY KEY IDENTITY(1,1),
-    Descripcion NVARCHAR(100) NOT NULL
+    Descripcion NVARCHAR(100) NOT NULL -- Puede ser 'Cliente' o 'Administrador'
 );
 -- Tabla: Usuario
 CREATE TABLE Usuario (
